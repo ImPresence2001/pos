@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.btn-danger {
+    margin-left: 10px;
+}

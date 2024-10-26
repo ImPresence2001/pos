@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="styles.css" rel="stylesheet">
+    <script src="app.js" defer></script>
+    <script src="pos.js" defer></script>
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">POS System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="pos.html"><i class="bi bi-cart"></i> POS</a></li>
+            <li class="nav-item"><a class="nav-link" href="report.html"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a></li>
+            <li class="nav-item"><a class="nav-link" href="inventory.html"><i class="bi bi-box"></i> Inventory</a></li>
+            <li class="nav-item"><a class="nav-link" href="order.html"><i class="bi bi-file-earmark-text"></i> Orders</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Point of Sale</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form id="posForm" class="mb-4">
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" id="category">
+                        <option value="">Select a category</option>
+                        <!-- Categories will be populated here -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="product">Product</label>
+                    <select class="form-control" id="product">
+                        <option value="">Select a product</option>
+                        <!-- Products will be populated based on category -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" min="1" value="1">
+                </div>
+
+                <button type="button" class="btn btn-primary" id="addToCart">Add to Cart</button>
+                <button type="button" class="btn btn-secondary" id="resetForm">Reset</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Cart</div>
+                <div class="card-body">
+                    <ul id="cart-items" class="list-group">
+                        <!-- Cart items will be populated here -->
+                    </ul>
+                    <div class="mt-3">
+                        <strong>Total:</strong> <span id="totalPrice">₱0.00</span>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="payment-method">Payment Method</label>
+                        <select class="form-control" id="payment-method">
+                            <option value="cash">Cash</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="mobile-payment">Mobile Payment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-type">Order Type</label>
+                        <select class="form-control" id="order-type">
+                            <option value="dine-in">Dine-in</option>
+                            <option value="to-go">For to go</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-success mt-3" id="orderNow">Order Now</button>
+                    <button type="button" class="btn btn-info mt-3" id="requestInvoice">Request Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Recent Orders Section -->
+    <div class="mt-5">
+        <h4>Recent Orders</h4>
+        <div class="card">
+            <div class="card-body">
+                <button class="btn btn-link" id="viewMoreOrders">View More</button>
+                <ul id="recent-orders" class="list-group">
+                    <!-- Recent orders will be populated here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Invoice Modal -->
+<div id="invoiceModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Invoice</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="invoiceContent">
+                <!-- Invoice content will be injected here -->
+            </div>
+            <div class="modal-footer">
+                <button id="downloadInvoice" class="btn btn-primary">Download Invoice</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
